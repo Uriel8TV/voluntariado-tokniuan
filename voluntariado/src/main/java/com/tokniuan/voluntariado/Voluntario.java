@@ -16,6 +16,8 @@ public class Voluntario {
     private String email;
     private String telefono;
     private String motivo;
+    private boolean contactado = false; // Por defecto, nadie está contactado al registrarse
+    private String medioContacto = "Ninguno"; // Por defecto nadie tiene un medio asignado
 
     // --- IMPORTANTE: Deja aquí abajo los Getters y Setters que ya tenías ---
     // (Añade también los del ID)
@@ -33,4 +35,20 @@ public class Voluntario {
 
     public String getMotivo() { return motivo; }
     public void setMotivo(String motivo) { this.motivo = motivo; }
+
+    public boolean isContactado() {
+        return contactado;
+    }
+
+    public void setContactado(boolean contactado) {
+        this.contactado = contactado;
+    }
+
+    public String getMedioContacto() {
+        return medioContacto;
+    }
+
+    public void setMedioContacto(String medioContacto) {
+        this.medioContacto = medioContacto;
+    }
 }
