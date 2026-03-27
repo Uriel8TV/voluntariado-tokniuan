@@ -1,0 +1,274 @@
+/* Reseteo básico... (esto déjalo igual) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* NUEVO: Paleta de colores de Tokniuan */
+:root {
+    --color-principal: #7800e9; /* Morado del logo */
+    --color-secundario: #1A365D; /* Un azul marino profundo para contrastar */
+    --color-texto: #333333;
+    --color-fondo-claro: #f4f6f9;
+}
+
+/* NUEVO: Aplicamos Open Sans a todo el texto por defecto */
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* NUEVO: Aplicamos Poppins solo a los títulos para que destaquen */
+h1, h2, h3, .logo {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hacemos que el botón principal también use la fuente de los títulos */
+.cta-button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    /* ... el resto de las propiedades del botón déjalas igual ... */
+}
+
+/* Diseño de la barra de navegación */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed; /* Se queda fija al hacer scroll */
+    width: 100%;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+}
+
+.logo {
+    background:url('fondo-tokniuan1.jpg') center/cover no-repeat;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* --- ESTILOS PREMIUM PARA EL MENÚ --- */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* Espacio entre los botones */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600; /* Letra más gordita y llamativa */
+    color: var(--color-secundario, #001f3f); /* Asumiendo que tu azul marino es secundario */
+    text-decoration: none;
+    letter-spacing: 0.5px; /* Elegancia pura */
+    text-transform: uppercase; /* Opcional: Mayúsculas para más impacto */
+    transition: color 0.3s ease, transform 0.3s ease; /* Para que el hover sea suave */
+}
+
+/* El efecto al pasar el mouse (Hover) */
+.nav-links a:hover {
+    color: var(--color-primario, #0dff00); /* Tu color verde */
+    transform: translateY(-2px); /* Da un ligero saltito hacia arriba */
+}
+
+/* Diseño de la sección principal (Hero) */
+.hero {
+    height: 100vh; 
+    /* El degradado oscuro ayuda a que el texto blanco sea siempre legible, sin importar la foto */
+    background:linear-gradient(rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.7)),
+                url('fondo-tokniuan.jpg') center/cover no-repeat; 
+    background-color: var(--color-secundario); /* Color de respaldo si la foto no carga */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Botón de llamado a la acción */
+.cta-button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.cta-button:hover {
+    background-color: #0ac213; /* Un tono Verde para el hover */
+    transform: scale(1.05); /* Efecto de crecimiento suave */
+}
+
+/* Diseño de las secciones de contenido */
+section {
+    padding: 5rem 10%;
+    text-align: center;
+}
+
+.section-light {
+    background-color: #f9f9f9;
+}
+/* --- Añade esto al final de tu style.css actual --- */
+
+/* Estilos de Nuestra Labor (Tarjetas) */
+.section-subtitle {
+    margin-bottom: 3rem;
+    color: #666;
+}
+
+.labor-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap; /* Para que se adapte en celulares */
+}
+
+.labor-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 300px;
+    border-top: 5px solid var(--color-principal);
+    transition: transform 0.3s ease;
+}
+
+.labor-card:hover {
+    transform: translateY(-10px); /* Efecto de flotar al pasar el mouse */
+}
+
+.labor-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+/* Estilos del Formulario */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit; /* Hereda la fuente de la web */
+}
+
+.contact-form .cta-button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Pie de página */
+footer {
+    background-color: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* --- ESTILOS DEL PANEL DE CONTROL (admin.html) --- */
+.admin-body {
+    background-color: var(--color-fondo-claro);
+}
+
+.admin-section {
+    padding: 8rem 5% 5rem; /* Damos espacio para que el menú no tape el título */
+    text-align: center;
+}
+
+.table-container {
+    overflow-x: auto; /* Permite deslizar la tabla en celulares */
+    margin-top: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    background: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: var(--color-secundario); /* Azul marino */
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+tr:hover {
+    background-color: #f9f9f9; /* Se ilumina un poco al pasar el mouse */
+}
+
+/* --- ADAPTACIÓN PARA CELULARES Y TABLETS --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Apila el logo y el menú uno sobre otro */
+        align-items: center;
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .nav-links {
+        flex-direction: column; /* Apila los enlaces del menú en vertical */
+        width: 100%;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .nav-links a {
+        display: block; /* Hace que sea más fácil tocar con el dedo en el celular */
+        padding: 0.5rem 0;
+    }
+}
