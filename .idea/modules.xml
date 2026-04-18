@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/voluntariado/voluntariado.iml" filepath="$PROJECT_DIR$/voluntariado/voluntariado.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/voluntariado-tokniuan.iml" filepath="$PROJECT_DIR$/.idea/voluntariado-tokniuan.iml" />
     </modules>
   </component>
