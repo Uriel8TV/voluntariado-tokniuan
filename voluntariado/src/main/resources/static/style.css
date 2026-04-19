@@ -96,8 +96,23 @@ nav {
     padding: 1rem 5%;
 }
 
+
+
+/* =========================================
+   ESTRUCTURA PRINCIPAL DE LA NAVEGACIÓN
+   ========================================= */
+.mi-navegacion {
+    display: flex;                   /* Activa el modo de alineación horizontal */
+    justify-content: space-between;  /* Empuja el logo a la izquierda y el botón a la derecha */
+    align-items: center;             /* Centra ambos elementos verticalmente para que no queden chuecos */
+    padding: 5px 5px;              /* Le da un poco de respiro (espacio) a los lados y arriba/abajo */
+    background-color: #ffffff;       /* Opcional: el color de fondo de tu barra */
+    position: relative;              /* Fundamental para que tu menú desplegable funcione bien */
+}
+
+/* Opcional: Para darle un poco de estilo al logo si aún no lo tiene */
 .logo {
-    background:url('fondo-tokniuan1.jpg') center/cover no-repeat;
+    background:url('fondo-tokniuan1.jpg');
     width: 40px;
     height: 40px;
     border-radius: 50%;
