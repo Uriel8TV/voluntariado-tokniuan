@@ -52,6 +52,41 @@
         </table>
     </div>
 </section>
+<section class="admin-section" style="margin-bottom: 40px; background: #f9f9f9; padding: 20px; border-radius: 8px;">
+    <h2>📝 Editor de la Página Principal</h2>
+    <p>Modifica los textos que ven los visitantes. Los cambios se guardarán automáticamente en la web.</p>
+
+    <form id="form-cms">
+        <div style="margin-bottom: 15px;">
+            <label><strong>Título Principal:</strong></label><br>
+            <input type="text" id="input_titulo_principal" style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label><strong>Fecha de Próxima Reunión o Evento:</strong></label><br>
+            <input type="text" id="input_fecha_proxima_reunion" style="width: 100%; padding: 8px;">
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <label><strong>Anuncio / Llamado a la acción:</strong></label><br>
+            <textarea id="input_mensaje_anuncio" rows="3" style="width: 100%; padding: 8px;"></textarea>
+        </div>
+
+        <div style="margin-bottom: 20px; padding: 15px; border: 1px dashed #ccc; border-radius: 5px; background: #fff;">
+            <label><strong>📷 Imagen Principal del Evento:</strong></label><br>
+            <p style="font-size: 13px; color: #666;">Selecciona una imagen desde tu computadora (.jpg, .png).</p>
+            <input type="file" id="input_archivo_evento" accept="image/*" style="margin-bottom: 10px;">
+
+            <div>
+                <img id="preview_imagen" src="" alt="Vista previa" style="max-width: 200px; display: none; border-radius: 5px; margin-top: 10px;">
+            </div>
+        </div>
+
+        <button type="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Guardar Cambios en la Web
+        </button>
+    </form>
+</section>
 
 <script src="admin.js"></script>
 </body>

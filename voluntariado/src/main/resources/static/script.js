@@ -1,4 +1,63 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+
+    // ==========================================
+        // LÓGICA DEL MENÚ DE HAMBURGUESA (Móviles)
+        // ==========================================
+        const btnMenuMovil = document.getElementById('btn-menu-movil');
+        const enlacesMenu = document.getElementById('enlaces-menu');
+
+        if (btnMenuMovil && enlacesMenu) {
+            // 1. Abrir/Cerrar con el botón de hamburguesa
+            btnMenuMovil.addEventListener('click', () => {
+                enlacesMenu.classList.toggle('mostrar-menu');
+            });
+
+            // 2. Autocierre: Cerrar el menú cuando se hace clic en un enlace
+            const links = enlacesMenu.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    enlacesMenu.classList.remove('mostrar-menu');
+                });
+            });
+        }
+
+        // ==========================================
+        // 1. LÓGICA DEL CMS (Cargar textos dinámicos)
+        // ... (El resto de tu código sigue igual hacia abajo)
+    // ==========================================
+    // 1. LÓGICA DEL CMS (Cargar textos dinámicos)
+    // ==========================================
+    try {
+        const respuestaCms = await fetch('/api/contenido');
+
+        if (respuestaCms.ok) {
+            const contenidos = await respuestaCms.json();
+
+            // Recorremos el JSON que nos dio el servidor
+                        contenidos.forEach(item => {
+                            const elementoHtml = document.getElementById(item.clave);
+
+                            if (elementoHtml) {
+                                // Si el elemento es nuestra imagen especial...
+                                if (item.clave === 'imagen_evento') {
+                                    // Construimos la ruta hacia la carpeta blindada de Java
+                                    elementoHtml.src = '/imagenes/' + item.contenido;
+                                    elementoHtml.style.display = 'inline-block'; // La hacemos visible
+                                }
+                                // Si es cualquier otro elemento (los textos normales)...
+                                else {
+                                    elementoHtml.innerText = item.contenido;
+                                }
+                            }
+                        });
+        }
+    } catch (error) {
+        console.error('Error al cargar el contenido web:', error);
+    }
+
+    // ==========================================
+    // 2. LÓGICA DEL FORMULARIO DE VOLUNTARIOS
+    // ==========================================
     const formVoluntario = document.getElementById('form-voluntario');
 
     if(formVoluntario) {

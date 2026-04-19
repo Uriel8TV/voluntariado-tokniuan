@@ -1,3 +1,51 @@
+/* =========================================
+   ESTILOS DEL MENÚ DE HAMBURGUESA
+   ========================================= */
+
+/* 1. Por defecto (en computadoras), el botón está oculto */
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333; /* Cambia al color de tu diseño */
+}
+
+/* 2. Reglas solo para Celulares y Tablets (pantallas menores a 768px) */
+@media screen and (max-width: 768px) {
+
+    /* Mostramos el botón de hamburguesa */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Escondemos la lista de enlaces y la preparamos para caer hacia abajo */
+    .nav-links {
+        display: none !important; /* Oculto por defecto */
+        flex-direction: column;
+        width: 100%;
+        background-color: #ffffff; /* Color de fondo del menú desplegado */
+        position: absolute;
+        top: 60px; /* Ajusta este número según la altura de tu barra de navegación */
+        left: 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombrita elegante */
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Acomodamos los enlaces para que se vean bien en lista */
+    .nav-links li {
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee; /* Línea divisoria suave */
+    }
+
+    /* 3. LA CLASE MÁGICA: Esta clase la pondremos con Javascript para mostrar el menú */
+    .nav-links.mostrar-menu {
+        display: flex !important;
+    }
+}
 /* Reseteo básico... (esto déjalo igual) */
 * {
     margin: 0;
@@ -50,8 +98,8 @@ nav {
 
 .logo {
     background:url('fondo-tokniuan1.jpg') center/cover no-repeat;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 
