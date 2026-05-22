@@ -22,38 +22,37 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // ==========================================
-    // 1. LÓGICA DEL CMS (Cargar textos dinámicos)
-    // ==========================================
-    try {
-        const respuestaCms = await fetch('/api/contenido');
+        // 1. LÓGICA DEL CMS (A prueba de balas)
+        // ==========================================
+        try {
+            const respuestaCms = await fetch('/api/contenido');
+            const textoRespuesta = await respuestaCms.text(); // Descargamos la respuesta cruda
 
-        if (respuestaCms.ok) {
-            const contenidos = await respuestaCms.json();
+            try {
+                // Intentamos transformarlo a JSON
+                const contenidos = JSON.parse(textoRespuesta);
 
-            // Recorremos el JSON que nos dio el servidor
-            contenidos.forEach(item => {
-                const elementoHtml = document.getElementById(item.clave);
-
-                if (elementoHtml) {
-                    // Si el elemento es nuestra imagen especial...
-                    if (item.clave === 'imagen_evento') {
-                        // Construimos la ruta hacia la carpeta blindada de Java
-                        elementoHtml.src = '/imagenes/' + item.contenido;
-                        elementoHtml.style.display = 'inline-block'; // La hacemos visible
+                // Si funciona, recorremos el JSON normal
+                contenidos.forEach(item => {
+                    const elementoHtml = document.getElementById(item.clave);
+                    if (elementoHtml) {
+                        if (item.clave === 'imagen_evento') {
+                            elementoHtml.src = '/imagenes/' + item.contenido;
+                            elementoHtml.style.display = 'inline-block';
+                        } else {
+                            elementoHtml.innerText = item.contenido;
+                        }
                     }
-                    // Si es cualquier otro elemento (los textos normales)...
-                    else {
-                        elementoHtml.innerText = item.contenido;
-                    }
-                }
-            });
+                });
+
+            } catch (errorParseo) {
+                // ¡SI FALLA, ATRAPAMOS EL HTML INTRUSO Y LO MOSTRAMOS!
+                alert('Recibí HTML en lugar de datos. El texto dice: ' + textoRespuesta.substring(0, 80));
+            }
+
+        } catch (error) {
+            console.error('Error de red al cargar el CMS:', error);
         }
-    } catch (error) {
-        console.error('Error al cargar el contenido web:', error);
-
-        // 👇 ¡AQUÍ ESTÁ EL CHIVATO PARA EL CELULAR! 👇
-        alert('Fallo detectado en el celular al cargar el CMS: ' + error.message);
-    }
 
     // ==========================================
     // 2. LÓGICA DEL FORMULARIO DE VOLUNTARIOS
