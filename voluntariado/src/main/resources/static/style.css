@@ -335,3 +335,22 @@ tr:hover {
         padding: 0.5rem 0;
     }
 }
+        /* =========================================
+           EFECTO DE TIRA LED PARA IMÁGENES
+           ========================================= */
+
+        @keyframes brillo-led {
+            0% { box-shadow: 0 0 10px #ff004c, 0 0 20px #ff004c; border: 2px solid #ff004c; }
+            25% { box-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff; border: 2px solid #00e5ff; }
+            50% { box-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14; border: 2px solid #39ff14; }
+            75% { box-shadow: 0 0 10px #bf00ff, 0 0 20px #bf00ff; border: 2px solid #bf00ff; }
+            100% { box-shadow: 0 0 10px #ff004c, 0 0 20px #ff004c; border: 2px solid #ff004c; }
+        }
+
+        .imagen-efecto-led {
+            border-radius: 12px;         /* Esquinas levemente redondeadas */
+            max-width: 100%;             /* Se adapta a celulares sin romper la pantalla */
+            max-height: 400px;           /* Altura máxima para no ocupar toda la vista */
+            object-fit: contain;         /* Muestra TODA la información del cartel sin recortar */
+            animation: brillo-led 6s infinite alternate; /* Alterna los colores suavemente */
+        }
