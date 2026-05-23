@@ -19,14 +19,33 @@ public class SecurityConfig {
 
                 // Aquí le damos las reglas al "guardia"
                 .authorizeHttpRequests(auth -> auth
-                        // 1. Lo que el PÚBLICO SÍ puede ver (La página principal y sus recursos)
-                        .requestMatchers("/", "/index.html", "/style.css", "/script.js", "/fondo-tokniuan.jpg").permitAll()
+                        // 1. Lo que el PÚBLICO SÍ puede ver (La página principal, textos del CMS y las fotos)
+                        .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/style.css",
+                                "/script.js",
+                                "/fondo-tokniuan.jpg",
+                                "/api/contenido/**",  // ¡NUEVO! Permite leer los textos de la base de datos
+                                "/imagenes/**"        // ¡NUEVO! Permite ver las fotos subidas
+                        ).permitAll()
+
                         // 2. Permitimos que cualquiera pueda ENVIAR el formulario
                         .requestMatchers(HttpMethod.POST, "/api/voluntarios").permitAll()
 
                         // 3. Lo que está PROTEGIDO (Solo coordinadores con contraseña)
-                        .requestMatchers("/admin.html", "/admin.js").authenticated()
+                        .requestMatchers(
+                                "/admin.html",
+                                "/admin.js",
+                                "/editor.html",       // ¡NUEVO! Protegemos la nueva página del editor
+                                "/editor.js"          // ¡NUEVO! Protegemos la lógica del editor
+                        ).authenticated()
+
                         .requestMatchers(HttpMethod.GET, "/api/voluntarios").authenticated()
+
+                        // Protegemos las rutas para MODIFICAR los textos o SUBIR fotos
+                        .requestMatchers(HttpMethod.PUT, "/api/contenido/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/imagenes/subir").authenticated()
 
                         // Cualquier otra cosa, por si acaso, se bloquea
                         .anyRequest().authenticated()
