@@ -285,9 +285,57 @@ tr:hover {
    ========================================= */
 @media screen and (max-width: 768px) {
 
-    /* Ajustes del Hero para que el texto encaje perfecto */
+    /* 1. ESTRUCTURA DEL HEADER: Fila split (Logo a la izquierda, Menú a la derecha) */
+    .mi-navegacion {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row !important; /* Forza la fila */
+        padding: 10px 15px;
+        gap: 0;
+    }
+
+    /* 2. LOGO: Tamaño ajustado para celular */
+    .logo {
+        width: 35px;
+        height: 35px;
+        margin: 0;
+    }
+
+    /* 3. BOTÓN DE HAMBURGUESA: Visible */
+    .menu-toggle {
+        display: block;
+        margin: 0;
+    }
+
+    /* 4. EL MENÚ DESPLEGABLE: Oculto por defecto, cae desde el header */
+    .nav-links {
+        display: none !important;
+        flex-direction: column;
+        width: 100%;
+        background-color: #ffffff;
+        position: absolute;
+        top: 55px; /* Ajusta esta altura si el menú queda muy arriba o muy abajo */
+        left: 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Clase mágica de Javascript para abrir el menú */
+    .nav-links.mostrar-menu {
+        display: flex !important;
+    }
+
+    /* 5. PROTECCIÓN DEL CONTENIDO: Empujamos el texto hacia abajo */
     .hero {
-        padding-top: 120px; /* Un poco más de espacio en celular por si el menú es alto */
+        padding-top: 110px;
     }
 
     .hero-content h1 {
@@ -297,33 +345,4 @@ tr:hover {
     .hero-content p {
         font-size: 1rem;
     }
-
-    /* Mostrar botón de hamburguesa */
-    .menu-toggle {
-        display: block;
-    }
-
-    /* Ocultar menú normal y prepararlo para desplegarse */
-    .nav-links {
-        display: none !important; /* Javascript quitará este important al hacer clic */
-        flex-direction: column;
-        width: 100%;
-        background-color: #ffffff;
-        position: absolute;
-        top: 60px; /* Altura donde empieza a caer el menú */
-        left: 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        padding: 0;
-    }
-
-    .nav-links li {
-        text-align: center;
-        padding: 15px 0;
-        border-bottom: 1px solid #eee;
-    }
-
-    /* Clase mágica que tu Javascript agrega para abrir el menú */
-    .nav-links.mostrar-menu {
-        display: flex !important;
-    }
-} }
+}
